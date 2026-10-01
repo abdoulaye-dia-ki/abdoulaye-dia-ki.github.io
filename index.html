@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdoulaye DIAKITE | Portfolio BTS SIO SISR</title>
+<style>
+:root { --bg:#fff; --bg2:#f5f6f8; --text:#1f2933; --dim:#56616e; --line:#dde1e6; --accent:#1f4e8c; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:"Segoe UI",Roboto,Arial,sans-serif; color:var(--text); background:var(--bg); line-height:1.65; font-size:16px; }
+.section-icon,.power-icon,.virtue-icon,.id-card-shield,.id-footer-dot,.c-icon,.hero-divider,.section-line,.section-label { display:none; }
+nav { position:sticky; top:0; z-index:10; display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; padding:.8rem 2rem; background:#fff; border-bottom:1px solid var(--line); }
+.nav-logo { font-weight:700; font-size:1.1rem; }
+.nav-links { display:flex; gap:1.4rem; list-style:none; flex-wrap:wrap; }
+.nav-links a { color:var(--dim); text-decoration:none; font-size:.95rem; }
+.nav-links a:hover, .nav-cta { color:var(--accent)!important; }
+.nav-cta { font-weight:600; }
+section { max-width:1050px; margin:0 auto; padding:3.2rem 2rem; }
+section + section { border-top:1px solid var(--line); }
+#hero { display:grid; grid-template-columns:1.5fr 1fr; gap:2.5rem; align-items:center; }
+.hero-badge { color:var(--dim); font-size:.9rem; margin-bottom:.6rem; }
+.hero-name span { display:block; font-size:2.6rem; font-weight:700; line-height:1.15; }
+.hero-role { color:var(--accent); font-weight:600; margin:.5rem 0 1rem; }
+.hero-desc { color:var(--dim); margin-bottom:1.4rem; max-width:34rem; }
+.hero-desc strong { color:var(--text); }
+.hero-stats { display:flex; gap:2rem; margin-bottom:1.5rem; }
+.h-stat-n { display:block; font-size:1.6rem; font-weight:700; color:var(--accent); }
+.h-stat-l { font-size:.85rem; color:var(--dim); }
+.hero-cta { display:flex; gap:.8rem; flex-wrap:wrap; }
+.btn { display:inline-block; padding:.6rem 1.2rem; border-radius:4px; text-decoration:none; font-size:.95rem; border:1px solid var(--accent); }
+.btn-red { background:var(--accent); color:#fff; }
+.btn-outline { color:var(--accent); }
+.id-card, .intel-box, .mission-card, .virtue-card, .contact-info-card, .contact-form-wrap { border:1px solid var(--line); border-radius:6px; background:#fff; }
+.id-card-header, .intel-title, .contact-info-title, .form-title { font-weight:600; padding:.8rem 1.1rem; border-bottom:1px solid var(--line); background:var(--bg2); }
+.id-card-body, .intel-box { padding:0 1.1rem; }
+.intel-title { margin:0 -1.1rem; }
+.id-row, .intel-row { display:flex; justify-content:space-between; gap:1rem; padding:.5rem 0; border-bottom:1px solid var(--line); font-size:.95rem; }
+.id-row:last-child, .intel-row:last-child { border-bottom:none; }
+.id-key, .intel-k { color:var(--dim); } .id-val, .intel-v { font-weight:600; text-align:right; }
+.id-card-footer { padding:.7rem 1.1rem; border-top:1px solid var(--line); color:var(--dim); font-size:.85rem; }
+.section-head { margin-bottom:1.6rem; padding-bottom:.5rem; border-bottom:2px solid var(--text); }
+.section-title { font-size:1.6rem; font-weight:700; }
+.about-grid { display:grid; grid-template-columns:1.4fr 1fr; gap:2.5rem; align-items:start; }
+.about-text p { margin-bottom:1rem; } .highlight { font-weight:600; }
+.skills-acc { max-width:760px; }
+.skill-acc { border:1px solid var(--line); border-radius:6px; margin-bottom:.6rem; }
+.skill-acc summary { display:flex; align-items:center; gap:1rem; padding:.9rem 1.1rem; cursor:pointer; list-style:none; font-weight:600; }
+.skill-acc summary::-webkit-details-marker { display:none; }
+.skill-acc summary:hover { background:var(--bg2); }
+.acc-name { flex:1; }
+.acc-level { font-size:.85rem; font-weight:400; color:var(--dim); border:1px solid var(--line); border-radius:3px; padding:.1rem .6rem; }
+.skill-acc summary::after { content:'+'; font-size:1.3rem; color:var(--accent); width:1.2rem; text-align:center; }
+.skill-acc[open] summary::after { content:'−'; }
+.acc-body { padding:.2rem 1.1rem 1rem; border-top:1px solid var(--line); }
+.acc-body ul { padding:.7rem 0 0 1.1rem; color:var(--dim); }
+.missions-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.mission-top { display:flex; justify-content:space-between; align-items:center; padding:.7rem 1.2rem; border-bottom:1px solid var(--line); background:var(--bg2); }
+.mission-num { font-weight:700; color:var(--dim); }
+.mission-badge { font-size:.8rem; border:1px solid var(--line); border-radius:3px; padding:.1rem .6rem; background:#fff; }
+.mission-body { padding:1.1rem 1.2rem; }
+.mission-title { font-size:1.1rem; margin-bottom:.5rem; }
+.mission-desc { color:var(--dim); margin-bottom:.9rem; }
+.mission-log { margin-bottom:1rem; }
+.mission-log-title { font-weight:600; margin-bottom:.3rem; color:var(--text)!important; }
+.mission-log ul { padding-left:1.1rem; color:var(--dim); font-size:.95rem; }
+.mission-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+.m-tag { font-size:.8rem; background:var(--bg2); border:1px solid var(--line); border-radius:3px; padding:.1rem .55rem; }
+.timeline-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; }
+.tl-heading { font-weight:700; font-size:1.1rem; margin-bottom:.8rem; }
+.tl-item { border-left:2px solid var(--line); padding:0 0 1.2rem 1rem; }
+.tl-date { font-size:.85rem; color:var(--dim); } .tl-title { font-weight:600; }
+.tl-place { color:var(--accent); font-size:.92rem; } .tl-desc { color:var(--dim); font-size:.92rem; }
+.virtues-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+.virtue-card { padding:1rem 1.2rem; } .virtue-name { font-weight:600; margin-bottom:.3rem; } .virtue-desc { color:var(--dim); font-size:.95rem; }
+.contact-layout { display:grid; grid-template-columns:1fr 1.4fr; gap:2rem; align-items:start; }
+.contact-info-card, .contact-form-wrap { padding-bottom:1.2rem; }
+.contact-line { padding:.6rem 1.1rem; border-bottom:1px solid var(--line); }
+.contact-line:last-child { border-bottom:none; }
+.contact-line a { display:flex; color:inherit; text-decoration:none; }
+.c-label { display:block; font-size:.8rem; color:var(--dim); } .c-val { font-weight:600; }
+.form-title { margin-bottom:1rem; } .form-title span { color:inherit; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.form-group, .form-row { margin:0 1.1rem 1rem; } .form-row .form-group { margin:0; }
+.form-label { display:block; font-size:.85rem; color:var(--dim); margin-bottom:.25rem; }
+.form-input, .form-textarea { width:100%; padding:.55rem .7rem; border:1px solid var(--line); border-radius:4px; font:inherit; background:#fff; color:var(--text); }
+.form-textarea { min-height:110px; resize:vertical; }
+.btn-send { margin:0 1.1rem; padding:.6rem 1.4rem; border:none; border-radius:4px; background:var(--accent); color:#fff; font:inherit; cursor:pointer; }
+.btn-send::after { content:'Envoyer le message'; }
+.form-note { margin:.7rem 1.1rem 0; font-size:.85rem; color:var(--dim); }
+#form-success { display:none; margin:1rem 1.1rem 0; padding:.7rem 1rem; border:1px solid #9bc5a3; background:#eef8f0; border-radius:4px; }
+footer { text-align:center; padding:1.5rem; border-top:1px solid var(--line); color:var(--dim); font-size:.9rem; }
+.foot-brand { font-weight:700; color:var(--text); } .foot-divider { display:none; }
+@media(max-width:800px){ #hero,.about-grid,.missions-grid,.timeline-grid,.contact-layout,.form-row { grid-template-columns:1fr; } nav { flex-direction:column; align-items:flex-start; } section { padding:2.4rem 1.2rem; } }
+.acc-body li .lvl { margin-left:.6rem; font-size:.8rem; color:var(--dim); border:1px solid var(--line); border-radius:3px; padding:.05rem .5rem; white-space:nowrap; }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">A<span>D</span>IAKITE</div>
+  <ul class="nav-links">
+    <li><a href="#about">À propos</a></li>
+    <li><a href="#skills">Compétences</a></li>
+    <li><a href="#projects">Projets</a></li>
+    <li><a href="#formations">Parcours</a></li>
+    <li><a href="#qualities">Qualités</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section id="hero">
+
+  <div class="hero-content">
+    <div class="hero-badge">
+      <span class="hero-badge-text">BTS SIO SISR · 1ère Année · Lycée Le Rebours</span>
+    </div>
+    <div class="hero-name">
+      <span class="line1">Abdoulaye</span>
+      <span class="line2">DIAKITE</span>
+    </div>
+    <div class="hero-role">Réseau · Système · Cybersécurité</div>
+    <div class="hero-divider"></div>
+    <p class="hero-desc">
+      Étudiant passionné par les <strong>infrastructures réseau</strong> et la <strong>cybersécurité</strong>. Je m'intéresse à la conception, à l'administration et à la sécurisation des systèmes et des réseaux, avec rigueur et sens du détail.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="h-stat-n">5</span><span class="h-stat-l">Stages</span></div>
+      <div class="hero-stat"><span class="h-stat-n">2</span><span class="h-stat-l">Projets majeurs</span></div>
+      <div class="hero-stat"><span class="h-stat-n">23</span><span class="h-stat-l">Semaines de stage</span></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-red">Voir mes projets</a>
+      <a href="#contact" class="btn btn-outline">Me contacter</a>
+    </div>
+  </div>
+
+  <div class="hero-card">
+    <div class="id-card">
+      <div class="id-card-header">
+        <div class="id-card-title">FICHE RAPIDE</div>
+        <div class="id-card-shield"></div>
+      </div>
+      <div class="id-card-body">
+        <div class="id-row"><span class="id-key">Nom</span><span class="id-val">Abdoulaye DIAKITE</span></div>
+        <div class="id-row"><span class="id-key">Âge</span><span class="id-val">19 ans</span></div>
+        <div class="id-row"><span class="id-key">Formation</span><span class="id-val gold">BTS SIO SISR</span></div>
+        <div class="id-row"><span class="id-key">Établissement</span><span class="id-val">Lycée Le Rebours</span></div>
+        <div class="id-row"><span class="id-key">Localisation</span><span class="id-val">Rosny-sous-Bois (93)</span></div>
+        <div class="id-row"><span class="id-key">Langue</span><span class="id-val">Anglais B1</span></div>
+        <div class="id-row"><span class="id-key">Spécialité</span><span class="id-val red">Réseau · Sécu</span></div>
+      </div>
+      <div class="id-card-footer">
+        <div class="id-footer-dot"></div>
+        <span class="id-footer-text">Portfolio · 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ── -->
+<section id="about">
+  <div class="section-head reveal">
+    <span class="section-icon"></span>
+    <div>
+      <span class="section-label">// Section 01</span>
+      <div class="section-title">À <span>propos</span></div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal-l">
+      <p>Je m'appelle <strong>Abdoulaye DIAKITE</strong>, 19 ans, étudiant en <strong>BTS SIO option SISR</strong> au Lycée Le Rebours à Paris. J'ai débuté par une formation professionnelle avant de poursuivre en BTS.</p>
+      <p>Titulaire d'un <strong>Bac Pro Systèmes Numériques option C</strong> (Réseaux Informatiques) au Lycée Condorcet de Montreuil, j'ai enchaîné <span class="highlight">cinq stages</span> en entreprise qui m'ont forgé une expérience concrète et solide.</p>
+      <p>Ma passion ? Les <strong>réseaux, les systèmes et la cybersécurité</strong>. J'aime construire une infrastructure fiable, diagnostiquer une panne et sécuriser un réseau. Chaque problème est l'occasion de comprendre en profondeur le fonctionnement d'un système.</p>
+    </div>
+    <div class="reveal-r">
+      <div class="intel-box">
+        <div class="intel-title">Informations</div>
+        <div class="intel-row"><span class="intel-k">Formation</span><span class="intel-v">BTS SIO SISR</span></div>
+        <div class="intel-row"><span class="intel-k">Diplôme obtenu</span><span class="intel-v">Bac Pro SN Option C</span></div>
+        <div class="intel-row"><span class="intel-k">Localisation</span><span class="intel-v">Rosny-sous-Bois (93)</span></div>
+        <div class="intel-row"><span class="intel-k">Langue étrangère</span><span class="intel-v">Anglais niveau B1</span></div>
+        <div class="intel-row"><span class="intel-k">Stages réalisés</span><span class="intel-v">5 stages</span></div>
+        <div class="intel-row"><span class="intel-k">Projets majeurs</span><span class="intel-v">2 projets</span></div>
+        <div class="intel-row"><span class="intel-k">Sports pratiqués</span><span class="intel-v">MMA · Kick-boxing · Muscu</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <div class="section-head reveal">
+    <span class="section-icon"></span>
+    <div>
+      <span class="section-label">// Section 02</span>
+      <div class="section-title">Compétences</div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-acc">
+    <details class="skill-acc">
+      <summary><span class="acc-name">Réseaux</span><span class="acc-level">Intermédiaire</span></summary>
+      <div class="acc-body"><ul><li>Configuration de switch et de serveur</li><li>VLAN</li><li>Adressage IP</li><li>Configuration LAN</li><li>Maintenance des équipements</li><li>Notions de télécom</li></ul></div>
+    </details>
+    <details class="skill-acc">
+      <summary><span class="acc-name">Systèmes</span><span class="acc-level">Débutant</span></summary>
+      <div class="acc-body"><ul><li>Windows <span class="lvl">Intermédiaire</span></li><li>Windows Server / IIS <span class="lvl">Intermédiaire</span></li><li>Linux <span class="lvl">Bases</span></li><li>Gestion des utilisateurs et des droits</li><li>Administration de base <span class="lvl">Intermédiaire</span></li><li>Active Directory <span class="lvl">Intermédiaire</span></li><li>MDT / Déploiement</li></ul></div>
+    </details>
+    <details class="skill-acc">
+      <summary><span class="acc-name">Cybersécurité</span><span class="acc-level">Débutant</span></summary>
+      <div class="acc-body"><ul><li>HTTPS (SSL/TLS)</li><li>Notions de pare-feu</li><li>Filtrage IP / Whitelist</li><li>Permissions NTFS</li><li>Antivirus et sécurisation</li></ul></div>
+    </details>
+    <details class="skill-acc">
+      <summary><span class="acc-name">Programmation</span><span class="acc-level">Débutant</span></summary>
+      <div class="acc-body"><ul><li>Python</li><li>Bash <span class="lvl">Bases</span></li><li>SQL</li></ul></div>
+    </details>
+    <details class="skill-acc">
+      <summary><span class="acc-name">Outils</span></summary>
+      <div class="acc-body"><ul><li>Cisco Packet Tracer</li><li>VirtualBox</li><li>VMware</li><li>WordPress / OVHcloud</li></ul></div>
+    </details>
+  </div>
+</section>
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <div class="section-head reveal">
+    <span class="section-icon"></span>
+    <div>
+      <span class="section-label">// Section 03</span>
+      <div class="section-title">Projets <span>réalisés</span></div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <div class="missions-grid">
+
+    <div class="mission-card mc1 reveal-l">
+      <div class="mission-top">
+        <div class="mission-num">01</div>
+        <span class="mission-badge mb-red">Infrastructure</span>
+      </div>
+      <div class="mission-body">
+        <h3 class="mission-title">Intranet IIS sécurisé</h3>
+        <p class="mission-desc">Déploiement d'un serveur web interne sous Windows Server avec architecture de sécurité à trois niveaux : filtrage IP, chiffrement SSL et certificats clients.</p>
+        <div class="mission-log">
+          <div class="mission-log-title">Détail du projet</div>
+          <ul>
+            <li>Déploiement IIS sur Windows Server (C:\Intranet_Projet)</li>
+            <li>Administration NTFS — droits granulaires IIS_IUSRS</li>
+            <li>Filtrage IP Whitelist (4 postes autorisés uniquement)</li>
+            <li>Certificat SSL auto-signé + liaison HTTPS Port 443</li>
+            <li>Authentification par certificats clients (navigateur)</li>
+            <li>Résolution des erreurs 403.14 et 404</li>
+          </ul>
+        </div>
+        <div class="mission-tags">
+          <span class="m-tag">Windows Server</span><span class="m-tag">IIS</span><span class="m-tag">SSL/TLS</span><span class="m-tag">NTFS</span><span class="m-tag">Cybersécurité</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-card mc2 reveal-r">
+      <div class="mission-top">
+        <div class="mission-num">02</div>
+        <span class="mission-badge mb-blue">Web & Cloud</span>
+      </div>
+      <div class="mission-body">
+        <h3 class="mission-title">Déploiement WordPress — EVM Cuisine Pro</h3>
+        <p class="mission-desc">Déploiement complet d'un site vitrine professionnel sous WordPress.org hébergé sur OVHcloud. Configuration FTP, base de données MySQL et sécurisation des rôles.</p>
+        <div class="mission-log">
+          <div class="mission-log-title" style="color:#64b5f6;">Détail du projet</div>
+          <ul>
+            <li>Configuration de l'accès FTP via FileZilla</li>
+            <li>Transfert et déploiement des fichiers du site</li>
+            <li>Connexion et configuration base de données MySQL</li>
+            <li>Finalisation de l'installation WordPress</li>
+            <li>Configuration des rôles utilisateurs (sécurisation contenu)</li>
+            <li>Production sur OVHcloud — environnement réel</li>
+          </ul>
+        </div>
+        <div class="mission-tags">
+          <span class="m-tag">WordPress</span><span class="m-tag">OVHcloud</span><span class="m-tag">FileZilla</span><span class="m-tag">MySQL</span><span class="m-tag">Hébergement web</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FORMATIONS ── -->
+<section id="formations">
+  <div class="section-head reveal">
+    <span class="section-icon"></span>
+    <div>
+      <span class="section-label">// Section 04</span>
+      <div class="section-title">Historique <span>de Formation</span></div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline-grid">
+    <div class="reveal-l">
+      <div class="tl-heading gold">Diplômes</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">2025 → 2027</div>
+          <div class="tl-title">BTS SIO — Option SISR</div>
+          <div class="tl-place">Lycée Le Rebours · Paris 75013</div>
+          <div class="tl-desc">Solutions d'Infrastructure, Systèmes et Réseaux. Formation en cours.</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">2022 → 2025</div>
+          <div class="tl-title">Bac Pro Systèmes Numériques</div>
+          <div class="tl-place">Lycée Condorcet · Montreuil (93)</div>
+          <div class="tl-desc">Option C — Réseaux Informatiques et Systèmes Communicants.</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal-r">
+      <div class="tl-heading red">Stages</div>
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-date">Mai 2026 · 6 semaines</div>
+          <div class="tl-title">Seine-Saint-Denis Habitat — Support informatique</div>
+          <div class="tl-place">Bobigny (93000)</div>
+          <div class="tl-desc">Support et assistance utilisateurs · Infrastructure réseau · Diagnostic matériel · Installation de postes · Mastérisation</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Nov. 2024 · 6 semaines</div>
+          <div class="tl-title">Mairie de Bobigny — Service Informatique</div>
+          <div class="tl-place">Bobigny (93000)</div>
+          <div class="tl-desc">Installation de postes · Assistance utilisateurs · Dépannage réseau</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Juin 2024 · 4 semaines</div>
+          <div class="tl-title">Platform Montreuil — Informatique & Réseaux</div>
+          <div class="tl-place">Montreuil (93)</div>
+          <div class="tl-desc">Déploiement de postes · Maintenance et mise à jour logicielle</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Jan. 2024 · 4 semaines</div>
+          <div class="tl-title">Mission Locale — Paris 18ème</div>
+          <div class="tl-place">Paris 18ème</div>
+          <div class="tl-desc">Création de machines virtuelles · Sécurisation des postes</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-date">Fév. 2023 · 3 semaines</div>
+          <div class="tl-title">Seine-Saint-Denis Habitat</div>
+          <div class="tl-place">Bobigny (93)</div>
+          <div class="tl-desc">Dépannage PC · Installation logiciels · Configuration réseau</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── VIRTUES ── -->
+<section id="qualities">
+  <div class="section-head reveal">
+    <span class="section-icon"></span>
+    <div>
+      <span class="section-label">// Section 05</span>
+      <div class="section-title">Qualités <span>personnelles</span></div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+  <div class="virtues-grid">
+    <div class="virtue-card reveal">
+      <span class="virtue-icon"></span>
+      <div class="virtue-name">Esprit d'Équipe</div>
+      <p class="virtue-desc">Je travaille en équipe, je communique clairement et je contribue à la réussite collective.</p>
+    </div>
+    <div class="virtue-card reveal">
+      <span class="virtue-icon"></span>
+      <div class="virtue-name">Curiosité Technique</div>
+      <p class="virtue-desc">Passion pour les réseaux et la cybersécurité. Je cherche constamment à comprendre en profondeur comment les systèmes fonctionnent.</p>
+    </div>
+    <div class="virtue-card reveal">
+      <span class="virtue-icon"></span>
+      <div class="virtue-name">Discipline & Endurance</div>
+      <p class="virtue-desc">MMA, kick-boxing, musculation — le sport forge la rigueur et la persévérance que j'applique aussi dans mon travail.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="section-head reveal">
+    <span class="section-icon"></span>
+    <div>
+      <span class="section-label">// Section 06</span>
+      <div class="section-title">Me <span>contacter</span></div>
+    </div>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="contact-layout">
+
+    <!-- Infos directes -->
+    <div class="contact-info-card reveal-l">
+      <div class="contact-info-title">Coordonnées</div>
+
+      <div class="contact-line">
+        <a href="mailto:adiakite2@lerebours.fr">
+          <div class="c-icon"></div>
+          <div><span class="c-label">Email</span><span class="c-val">adiakite2@lerebours.fr</span></div>
+        </a>
+      </div>
+
+      <div class="contact-line">
+        <div class="c-icon"></div>
+        <div><span class="c-label">Localisation</span><span class="c-val">Rosny-sous-Bois (93110)</span></div>
+      </div>
+
+      <div class="contact-line">
+        <div class="c-icon"></div>
+        <div><span class="c-label">École</span><span class="c-val">Lycée Le Rebours · Paris 75013</span></div>
+      </div>
+    </div>
+
+    <!-- Formulaire fonctionnel -->
+    <div class="contact-form-wrap reveal-r">
+      <div class="form-title">Envoyer un <span>message</span></div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label" for="f-name">Votre nom</label>
+          <input class="form-input" id="f-name" type="text" placeholder="Nom Prénom" autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-email">Votre email</label>
+          <input class="form-input" id="f-email" type="email" placeholder="email@example.com" autocomplete="off">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-subject">Objet</label>
+        <input class="form-input" id="f-subject" type="text" placeholder="Opportunité professionnelle / Question..." autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="f-message">Message</label>
+        <textarea class="form-textarea" id="f-message" placeholder="Votre message ici..."></textarea>
+      </div>
+
+      <button class="btn-send" id="btn-send" type="button"></button>
+      <p class="form-note">Le formulaire ouvrira votre client mail avec le message prêt à envoyer.</p>
+
+      <div id="form-success">Message préparé ! Votre client mail va s'ouvrir.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="foot-brand">A<span>D</span>IAKITE</div>
+  <div class="foot-divider"></div>
+  <div class="foot-copy">BTS SIO SISR · Lycée Le Rebours · Paris · 2025</div>
+</footer>
+
+<script>
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');}});
+},{threshold:.1});
+document.querySelectorAll('.reveal,.reveal-l,.reveal-r').forEach(el=>io.observe(el));
+
+/* ── CONTACT FORM → mailto ── */
+document.getElementById('btn-send').addEventListener('click',()=>{
+  const name    = document.getElementById('f-name').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const subject = document.getElementById('f-subject').value.trim() || 'Message depuis mon portfolio';
+  const msg     = document.getElementById('f-message').value.trim();
+
+  if(!msg){
+    document.getElementById('f-message').focus();
+    document.getElementById('f-message').style.borderBottomColor='var(--red)';
+    return;
+  }
+
+  const body = `Bonjour Abdoulaye,\n\n${msg}\n\n---\nEnvoyé par : ${name||'Visiteur'}${email?' <'+email+'>':''}\n(Via le portfolio)`;
+  const mailto = `mailto:adiakite2@lerebours.fr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  window.location.href = mailto;
+
+  document.getElementById('form-success').style.display = 'block';
+  setTimeout(()=>{ document.getElementById('form-success').style.display='none'; }, 5000);
+});
+</script>
+</body>
+</html>
